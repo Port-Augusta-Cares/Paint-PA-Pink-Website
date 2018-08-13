@@ -7,3 +7,6 @@ public/
 site/public/
 dist/
 .tmp/
+
+# netlifyctl debug log
+netlifyctl-debug.log
