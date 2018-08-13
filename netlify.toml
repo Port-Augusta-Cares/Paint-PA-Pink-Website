@@ -11,7 +11,7 @@ ID = "Paint PA Pink"
   publish = "dist"
 
   # This will be your default build command
-  command = "hugo --verbose --source site"
+  command = "hugo --verbose --source site --destination ../dist"
   
   # This is where we will look for your lambda functions
   #functions = "project/functions/"

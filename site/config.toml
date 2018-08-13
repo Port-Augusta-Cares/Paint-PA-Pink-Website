@@ -4,7 +4,7 @@
 # in the templates via {{ .Site.Params.myvariable }}.
 baseURL = "/" # The subpath of your site, e.g. / or /blog
 languageCode = "en-us"
-languageLang = "en"
+#languageLang = "en"
 title = "Paint PA Pink"
 theme = "hugo-nederburg-theme"
 
