@@ -1,0 +1,60 @@
+[Settings]
+ID = "Paint PA Pink"
+
+## Settings in the [build] context are global and are applied to all contexts unless otherwise overridden by more specific contexts.  
+[build]
+  # This is the directory to change to before starting a build.
+  # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
+  base = "/"
+  
+  # This is the directory that you are publishing from (relative to root of your repo)
+  publish = "dist"
+
+  # This will be your default build command
+  command = "hugo"
+  
+  # This is where we will look for your lambda functions
+  #functions = "project/functions/"
+
+[build.environment]
+  HUGO_VERSION = "0.46"
+
+## Production context: All deploys from the Production branch set in your site's deploy settings will inherit these settings.
+## production - this is the branch that was set in the UI to publish from
+[context.production]
+  #publish = "output/"
+  #command = "make publish"
+  #environment = { ACCESS_TOKEN = "super secret", NODE_ENV = "8.0.1" }
+
+[context.production.environment]
+  HUGO_VERSION = "0.46"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+
+## Deploy Preview context: All Deploy Previews (https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) will inherit these settings.
+## deploy-preview - a deploy from a Pull Request
+[context.deploy-preview]
+  command = "hugo --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.46"
+
+## Branch Deploy context: All deploys that are not resulting from a Pull/Merge Request and not from the primary, linked branch will inherit these settings.
+## ranch-deploy - a deploy from any Branch
+[context.branch-deploy]
+  command = "hugo -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+  HUGO_VERSION = "0.46"
+
+## Specific branch context: Deploys from this branch will take these settings and override their current ones.
+# [context.staging] # 'staging' is a branch name
+#   command = "echo 'staging'"
+#   base = "staging"
+# # For contexts of branches with special characters, enclose the branch name with quotes
+# [context."feat/branch"]
+#   command = "echo 'special branch'"
+#   base = "branch"
+
+
+
