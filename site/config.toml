@@ -1,11 +1,15 @@
 # Site settings
 # --------------
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ .Site.Params.myvariable }}.
-baseURL = "/" # The subpath of your site, e.g. / or /blog
+
+# You can create any custom variable you would like, and they will be accessible in the templates via {{ .Site.Params.myvariable }}.
+
+# The subpath of the site, e.g. / or /blog
+baseURL = "/"
 languageCode = "en-us"
 #languageLang = "en"
 title = "Paint PA Pink"
+
+# Theme to apply (use directory name)
 theme = "hugo-nederburg-theme"
 
 # Build settings

@@ -1,13 +1,16 @@
 [Settings]
-ID = "paintpapink"
+# The Netlify API ID for the site (Site Settings->General->Site details)
+# Used by the netlifyctl CLI tool for applying site specific settings
+ID = "95abc638-2a30-4dd7-9529-63dfce35b0d8"
 
 ## Settings in the [build] context are global and are applied to all contexts unless otherwise overridden by more specific contexts.  
 [build]
-  # This is the directory to change to before starting a build.
-  # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
+  # The directory to change to before starting a build
+  # NOTE: This is where we will look for package.json/.nvmrc/etc, not repo root
   base = ""
   
   # This is the directory that you are publishing from (relative to root of your repo)
+  # the directory to publish (relative to root of your repo)
   publish = "dist"
 
   # This will be your default build command
@@ -32,29 +35,27 @@ ID = "paintpapink"
   HUGO_ENABLEGITINFO = "true"
 
 ## Deploy Preview context: All Deploy Previews (https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) will inherit these settings.
-## deploy-preview - a deploy from a Pull Request
+## deploy-preview - corresponds to previews built for Pull Requests and Merge Requests integrations
 [context.deploy-preview]
-  command = "hugo --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "hugo --buildFuture --baseURL $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.46"
 
 ## Branch Deploy context: All deploys that are not resulting from a Pull/Merge Request and not from the primary, linked branch will inherit these settings.
-## ranch-deploy - a deploy from any Branch
+## branch-deploy - a deploy from any Branch
 [context.branch-deploy]
-  command = "hugo -b $DEPLOY_PRIME_URL"
+  command = "hugo --buildFuture --baseURL $DEPLOY_PRIME_URL"
 
 [context.branch-deploy.environment]
   HUGO_VERSION = "0.46"
 
 ## Specific branch context: Deploys from this branch will take these settings and override their current ones.
-# [context.staging] # 'staging' is a branch name
-#   command = "echo 'staging'"
-#   base = "staging"
+[context.develop] # 'develop' is a branch name
+  command = "hugo --buildFuture --baseURL $DEPLOY_PRIME_URL"
+  base = "staging"
+
 # # For contexts of branches with special characters, enclose the branch name with quotes
 # [context."feat/branch"]
 #   command = "echo 'special branch'"
 #   base = "branch"
-
-
-
