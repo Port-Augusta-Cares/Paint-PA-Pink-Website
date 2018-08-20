@@ -45,15 +45,15 @@ ID = "95abc638-2a30-4dd7-9529-63dfce35b0d8"
 ## Branch Deploy context: All deploys that are not resulting from a Pull/Merge Request and not from the primary, linked branch will inherit these settings.
 ## branch-deploy - a deploy from any Branch
 [context.branch-deploy]
-  command = "hugo --buildFuture --baseURL $DEPLOY_PRIME_URL"
+  command = "hugo --verbose --source site --destination ../dist --buildFuture --baseURL $DEPLOY_PRIME_URL"
 
 [context.branch-deploy.environment]
   HUGO_VERSION = "0.46"
 
 ## Specific branch context: Deploys from this branch will take these settings and override their current ones.
 [context.develop] # 'develop' is a branch name
-  command = "hugo --buildFuture --baseURL $DEPLOY_PRIME_URL"
-  base = "staging"
+  command = "hugo --verbose --source site --destination ../dist --buildFuture --baseURL $DEPLOY_PRIME_URL"
+  base = ""
 
 # # For contexts of branches with special characters, enclose the branch name with quotes
 # [context."feat/branch"]
