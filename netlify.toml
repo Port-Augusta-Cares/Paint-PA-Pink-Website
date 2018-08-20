@@ -1,7 +1,7 @@
 [Settings]
 # The Netlify API ID for the site (Site Settings->General->Site details)
 # Used by the netlifyctl CLI tool for applying site specific settings
-ID = "95abc638-2a30-4dd7-9529-63dfce35b0d8"
+ID = "c0f962c2-4f54-4d13-b632-34acf1426882"
 
 ## Settings in the [build] context are global and are applied to all contexts unless otherwise overridden by more specific contexts.  
 [build]
